@@ -1,6 +1,6 @@
 minusOne = 1
 minusTwo = 1
-print(str(minusOne) + "\n" + str(minusTwo))git
+print(str(minusOne) + "\n" + str(minusTwo))
 for a in range(0,50):
     curNum = minusOne + minusTwo
     print(curNum)
