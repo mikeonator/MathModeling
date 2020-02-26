@@ -29,9 +29,11 @@ def problemTwo():
     iPrime = ((transCoef)*(S)*(I) - (I/14))
     rPrime = (I/14)
 
-    timemax = 25
+    startTime = 0
+    endTime = 10
 
-    for a in range(0,(timemax+1)):
+
+    for a in range(startTime, (endTime + 1)):
         newS = S
         newI = I
         newR = R
