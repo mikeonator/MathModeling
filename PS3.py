@@ -8,6 +8,7 @@ def sirForFunc(tInitial,tFinal,steps):
         I = 2100.0
         R = 2500.0
         t = tInitial
+        x = 1
 
         sList = [S]
         iList = [I]
@@ -17,6 +18,12 @@ def sirForFunc(tInitial,tFinal,steps):
         for a in range(0,steps):
 
             transCoef = 0.00001
+
+            if((a > 1) and (iList[-1] < iList[-2]) and (x == 1)):
+                print("\t\tT :: " + str(t))
+                print("\t\tI' :: " + str(iPrime))
+                print("\t\t"+ "_"*4)
+                x = 0
 
             sPrime = ((-1*transCoef)*(S)*(I))
             iPrime = ((transCoef)*(S)*(I) - (I/14))
@@ -50,7 +57,7 @@ def sirForFunc(tInitial,tFinal,steps):
         plt.close()
 
 
-def sirWhileFunc(tInitial,tFinal,step):
+def sirWhileFunc(tInitial,tFinal,deltaT):
         S = 45400.0
         I = 2100.0
         R = 2500.0
@@ -61,8 +68,6 @@ def sirWhileFunc(tInitial,tFinal,step):
         sPrime = ((-1*transCoef)*(S)*(I))
         iPrime = ((transCoef)*(S)*(I) - (I/14))
         rPrime = (I/14)
-
-        deltaT = ((tFinal - tInitial)/step)
 
         sList = [S]
         iList = [I]
@@ -101,9 +106,11 @@ def sirWhileFunc(tInitial,tFinal,step):
             iList.append(I)
             rList.append(R)
             tList.append(t)
-        if(iList[-1] < iList[-2]):
-            print(t)
-            print(I)
+
+        if((len(tList) > 2) and(iList[-1] < iList[-2])):
+            print("\t\tT :: " + str(t - deltaT))
+            print("\t\tI :: " + str(I - deltaI))
+            print("\t\t" + "_"*4)
 
         plt.plot(tList, sList, label="S")           # creates piecewise-linear graphs
         plt.plot(tList, iList, label="I")
@@ -114,18 +121,27 @@ def sirWhileFunc(tInitial,tFinal,step):
         plt.ylabel("Number of People")
         plt.title("Measles S-I-R")
         plt.legend()
-        plt.savefig('WhileLoopSIR' + str(step) + 'step.png')
+        plt.savefig('WhileLoopSIR' + str(deltaT) + 'delT.png')
         plt.close()
 
 
 
 def problemOne():
     print("Problem One\n")
+    print("\ta)\nDone.")
     sirForFunc(0,45,45)
     sirForFunc(0,45,5)
+    print("\tb)  The value of I' is going to be negative")
+
+    print("\tc)  I mean I kinda just did it it's a bit hard to describe")
+
+    print("\td)")
     sirWhileFunc(0,45,1)
+    print("\te)")
     sirWhileFunc(0,45,0.1)
+    print("\tf)")
     sirWhileFunc(0,45,0.01)
+    print("\tg)")
     sirWhileFunc(0,45,0.001)
 
 
