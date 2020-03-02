@@ -45,7 +45,7 @@ def problemTwo():
         print("time = " + str(a))                                                               # Print current t value
         print("\tS = " + str(deltaS) + "\n\tI = " + str(deltaI) + "\n\tR = " + str(deltaR))     # Print S, I, and R for value t=a
         print(5*"_" + "\n")                                                                     # Print a line
-
+        
         S = newS
         I = newI
         R = newR
@@ -53,6 +53,7 @@ def problemTwo():
 
 def problemThree():
     print("\nProblem Three\n")
+
 
 
 
