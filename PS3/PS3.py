@@ -143,17 +143,45 @@ def sirWhileFunc(tInitial,tFinal,deltaT):
 
 def problemTwo():
     print("\nProblem Two\n")
-    aans = rabbit(100,37)[-1][1]
-    print("\ta) " + str(aans).split(".")[0] + "." + str(aans).split(".")[1][0:2])
-def rabbit(rZero,tFinal):
+
+    print("\ta) " + str(rabbit(100,1000,2000)[1][36]).split(".")[0] + "." + str(rabbit(100,1000,2000)[1][36]).split(".")[1][0:2])
+
+    print("\tb) The carrying capacity of the logistic equation is 2000")
+
+    plt.plot(rabbit(100,100,2000)[0],rabbit(100,100,2000)[1], label="100")
+    plt.plot(rabbit(2000,100,2000)[0],rabbit(2000,100,2000)[1], label="2000")
+    plt.plot(rabbit(2500,100,2000)[0],rabbit(2500,100,2000)[1], label="2500")
+    plt.xlabel("Time (in days)")
+    plt.ylabel("Number of Rabbits")
+    plt.title("Rabbit Population Growth varied on starting value")
+    plt.legend()
+    plt.savefig("rabbitPopGrowthStart.png")
+    plt.close()
+    print("\tc) Done.")
+
+
+    plt.plot(rabbit(100,150,1000)[0],rabbit(100,150,1000)[1], label="1000")
+    plt.plot(rabbit(100,150,3000)[0],rabbit(100,150,3000)[1], label="3000")
+    plt.plot(rabbit(100,150,500)[0],rabbit(100,150,500)[1], label="500")
+    plt.plot(rabbit(100,150,4500)[0],rabbit(100,150,4500)[1], label="4500")
+    plt.xlabel("Time (in days)")
+    plt.ylabel("Number of Rabbits")
+    plt.title("Rabbit Population Growth varied on Carrying Capacity")
+    plt.legend()
+    plt.savefig("rabbitPopGrowthCarry.png")
+    plt.close()
+
+
+def rabbit(rZero,tFinal,carry):
     R = rZero
-    rabbitList = []
+    rabbitList = [[],[]]
     
     for a in range(0,tFinal+1):
         #print("t = " + str(a + 1) + " ||| r = " + str(R))
-        rPrime = ((0.1)*R*(1-(R/2000)))
+        rPrime = ((0.1)*R*(1-(R/carry)))
         R += rPrime
-        rabbitList.append([a,R])
+        rabbitList[0].append(a)
+        rabbitList[1].append(R)
     return rabbitList 
 
 
