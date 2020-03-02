@@ -3,6 +3,24 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
+def problemOne():
+    print("Problem One\n")
+    print("\ta)\nDone.")
+    sirForFunc(0,45,45)
+    sirForFunc(0,45,5)
+    print("\tb)  The value of I' is going to be negative")
+
+    print("\tc)  I mean I kinda just did it it's a bit hard to describe")
+
+    print("\td)")
+    sirWhileFunc(0,45,1)
+    print("\te)")
+    sirWhileFunc(0,45,0.1)
+    print("\tf)")
+    sirWhileFunc(0,45,0.01)
+    print("\tg)")
+    sirWhileFunc(0,45,0.001)
+
 def sirForFunc(tInitial,tFinal,steps):
         S = 45400.0
         I = 2100.0
@@ -55,7 +73,6 @@ def sirForFunc(tInitial,tFinal,steps):
         plt.legend()
         plt.savefig('ForLoopSIR' + str(steps) + 'step.png')
         plt.close()
-
 
 def sirWhileFunc(tInitial,tFinal,deltaT):
         S = 45400.0
@@ -124,44 +141,26 @@ def sirWhileFunc(tInitial,tFinal,deltaT):
         plt.savefig('WhileLoopSIR' + str(deltaT) + 'delT.png')
         plt.close()
 
-
-
-def problemOne():
-    print("Problem One\n")
-    print("\ta)\nDone.")
-    sirForFunc(0,45,45)
-    sirForFunc(0,45,5)
-    print("\tb)  The value of I' is going to be negative")
-
-    print("\tc)  I mean I kinda just did it it's a bit hard to describe")
-
-    print("\td)")
-    sirWhileFunc(0,45,1)
-    print("\te)")
-    sirWhileFunc(0,45,0.1)
-    print("\tf)")
-    sirWhileFunc(0,45,0.01)
-    print("\tg)")
-    sirWhileFunc(0,45,0.001)
-
-
-
 def problemTwo():
     print("\nProblem Two\n")
-   
-
-
-def problemThree():
-    print("\nProblem Three\n")
-
-
+    aans = rabbit(100,37)[-1][1]
+    print("\ta) " + str(aans).split(".")[0] + "." + str(aans).split(".")[1][0:2])
+def rabbit(rZero,tFinal):
+    R = rZero
+    rabbitList = []
+    
+    for a in range(0,tFinal+1):
+        #print("t = " + str(a + 1) + " ||| r = " + str(R))
+        rPrime = ((0.1)*R*(1-(R/2000)))
+        R += rPrime
+        rabbitList.append([a,R])
+    return rabbitList 
 
 
 def main():
     print("Problem Set 3\n" + 10*"_" + "\n")
     problemOne()
     problemTwo()
-    problemThree()
 
 
 if __name__ == '__main__':
