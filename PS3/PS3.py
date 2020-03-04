@@ -71,7 +71,7 @@ def sirForFunc(tInitial,tFinal,steps):
         plt.ylabel("Number of People")
         plt.title("Measles S-I-R")
         plt.legend()
-        plt.savefig('ForLoopSIR' + str(steps) + 'step.png')
+        plt.savefig('PS3/ForLoopSIR' + str(steps) + 'step.png')
         plt.close()
 
 def sirWhileFunc(tInitial,tFinal,deltaT):
@@ -138,7 +138,7 @@ def sirWhileFunc(tInitial,tFinal,deltaT):
         plt.ylabel("Number of People")
         plt.title("Measles S-I-R")
         plt.legend()
-        plt.savefig('WhileLoopSIR' + str(deltaT) + 'delT.png')
+        plt.savefig('PS3/WhileLoopSIR' + str(deltaT) + 'delT.png')
         plt.close()
 
 def problemTwo():
@@ -155,7 +155,7 @@ def problemTwo():
     plt.ylabel("Number of Rabbits")
     plt.title("Rabbit Population Growth varied on starting value")
     plt.legend()
-    plt.savefig("rabbitPopGrowthStart.png")
+    plt.savefig("PS3/rabbitPopGrowthStart.png")
     plt.close()
     print("\tc) Done.")
 
@@ -167,7 +167,7 @@ def problemTwo():
     plt.ylabel("Number of Rabbits")
     plt.title("Rabbit Population Growth varied on Carrying Capacity")
     plt.legend()
-    plt.savefig("rabbitPopGrowthCarry.png")
+    plt.savefig("PS3/rabbitPopGrowthCarry.png")
     plt.close()
     print("\td) They all have the same shape, just approach a greater asymptote")
 
@@ -179,7 +179,7 @@ def problemTwo():
     plt.ylabel("Number of Rabbits")
     plt.title("Rabbit Population Growth varied on k value")
     plt.legend()
-    plt.savefig("rabbitPopGrowthModifier.png")
+    plt.savefig("PS3/rabbitPopGrowthModifier.png")
     plt.close()
     print("\te) As the K value gets larger, the function instead oscillates around the carrying capacity with a larger amplitude. I'm not exactly sure what making it negative is doing to the function")
 
