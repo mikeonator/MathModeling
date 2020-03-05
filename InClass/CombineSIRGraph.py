@@ -68,5 +68,5 @@ def main():
 
 
 
-if __name__ == '__main__':                                                                                                      #This thing basically lets the interpreter thing read my code before I run it all the way through because of how Python works
+if __name__ == '__main__':
     main()
