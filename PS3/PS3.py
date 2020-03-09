@@ -219,7 +219,7 @@ def problemTwo():
     plt.close()
     print("\te) As the K value gets larger, the function instead oscillates around the carrying capacity with a larger amplitude. I'm not exactly sure what making it negative is doing to the function")
 
-    print("\tf) ")
+    print("\tf) Answer found in 2FAnswer.jpeg")
 
 def rabbit(rZero,tFinal,K,L):
     R = rZero
@@ -232,12 +232,6 @@ def rabbit(rZero,tFinal,K,L):
         rabbitList[0].append(a)
         rabbitList[1].append(R)
     return rabbitList
-
-def reverserabbit(initialR, tFinal, finalR):
-    R = finalR
-    rabbitList = [[],[]]
-
-    
 
 def main():
     print("Problem Set 3\n" + 10*"_" + "\n")
