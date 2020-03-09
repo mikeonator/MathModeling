@@ -13,13 +13,21 @@ def problemOne():
     print("\tc)  I mean I kinda just did it it's a bit hard to describe")
 
     print("\td)")
-    sirWhileFunc(0,45,1)
+    sirWhileFunc(0,1)
     print("\te)")
-    sirWhileFunc(0,45,0.1)
+    sirWhileFunc(0,0.1)
     print("\tf)")
-    sirWhileFunc(0,45,0.01)
+    sirWhileFunc(0,0.01)
     print("\tg)")
-    sirWhileFunc(0,45,0.001)
+    sirWhileFunc(0,0.001)
+
+    print("\th)  the smaller my step function gets, the higher accuracy I can claim to have. The smaller DeltaT gets, the more points my code actually calculates (higher accuracy).")
+
+    print("\ti)")
+    sirWhileFunc(45,-1,True)
+    sirWhileFunc(45,-0.1,True)
+    sirWhileFunc(45,-0.01,True)
+    sirWhileFunc(45,-0.001,True)
 
 def sirForFunc(tInitial,tFinal,steps):
         S = 45400.0
@@ -74,11 +82,12 @@ def sirForFunc(tInitial,tFinal,steps):
         plt.savefig('PS3/ForLoopSIR' + str(steps) + 'step.png')
         plt.close()
 
-def sirWhileFunc(tInitial,tFinal,deltaT):
+def sirWhileFunc(tInitial,deltaT,reverse=False):
         S = 45400.0
         I = 2100.0
         R = 2500.0
         t = tInitial
+        testtype = ""
 
         transCoef = 0.00001
 
@@ -104,30 +113,57 @@ def sirWhileFunc(tInitial,tFinal,deltaT):
         iList.append(I)
         rList.append(R)
         tList.append(t)
+        if(reverse == False):
+            while(iList[-1] > iList[-2]):
+                sPrime = ((-1*transCoef)*(S)*(I))
+                iPrime = ((transCoef)*(S)*(I) - (I/14))
+                rPrime = (I/14)
+                
+                deltaS = (sPrime*deltaT)
+                deltaI = (iPrime*deltaT)
+                deltaR = (rPrime*deltaT)
 
-        while(iList[-1] > iList[-2]):
-            sPrime = ((-1*transCoef)*(S)*(I))
-            iPrime = ((transCoef)*(S)*(I) - (I/14))
-            rPrime = (I/14)
-            
-            deltaS = (sPrime*deltaT)
-            deltaI = (iPrime*deltaT)
-            deltaR = (rPrime*deltaT)
+                S += deltaS
+                I += deltaI
+                R += deltaR
+                t += deltaT
 
-            S += deltaS
-            I += deltaI
-            R += deltaR
-            t += deltaT
+                sList.append(S)
+                iList.append(I)
+                rList.append(R)
+                tList.append(t)
 
-            sList.append(S)
-            iList.append(I)
-            rList.append(R)
-            tList.append(t)
+            if((len(tList) > 2) and(iList[-1] < iList[-2])):
+                print("\t\tT :: " + str(t - deltaT))
+                print("\t\tI :: " + str(I - deltaI))
+                print("\t\t" + "_"*4)
 
-        if((len(tList) > 2) and(iList[-1] < iList[-2])):
-            print("\t\tT :: " + str(t - deltaT))
-            print("\t\tI :: " + str(I - deltaI))
-            print("\t\t" + "_"*4)
+            testtype = "WhileLoopSIR"
+        elif(reverse == True):
+            while(iList[-1] >= (1)):
+                sPrime = ((-1*transCoef)*(S)*(I))
+                iPrime = ((transCoef)*(S)*(I) - (I/14))
+                rPrime = (I/14)
+                
+                deltaS = (sPrime*deltaT)
+                deltaI = (iPrime*deltaT)
+                deltaR = (rPrime*deltaT)
+
+                S += deltaS
+                I += deltaI
+                R += deltaR
+                t += deltaT
+
+                sList.append(S)
+                iList.append(I)
+                rList.append(R)
+                tList.append(t)
+            print("\t\tFirst T & I values when I > 1 for DeltaT == " + str(deltaT))
+            print("\t\t\tT = " + str(t + deltaT))
+            print("\t\t\tI = " + str(I + (iPrime*deltaT)))
+            print("\t\t" + "_"*5)
+
+            testtype = "ReverseWhileSIR"
 
         plt.plot(tList, sList, label="S")           # creates piecewise-linear graphs
         plt.plot(tList, iList, label="I")
@@ -138,7 +174,7 @@ def sirWhileFunc(tInitial,tFinal,deltaT):
         plt.ylabel("Number of People")
         plt.title("Measles S-I-R")
         plt.legend()
-        plt.savefig('PS3/WhileLoopSIR' + str(deltaT) + 'delT.png')
+        plt.savefig('PS3/' + testtype + str(deltaT) + 'delT.png')
         plt.close()
 
 def problemTwo():
@@ -185,8 +221,6 @@ def problemTwo():
 
     print("\tf) ")
 
-
-
 def rabbit(rZero,tFinal,K,L):
     R = rZero
     rabbitList = [[],[]]
@@ -199,12 +233,10 @@ def rabbit(rZero,tFinal,K,L):
         rabbitList[1].append(R)
     return rabbitList 
 
-
 def main():
     print("Problem Set 3\n" + 10*"_" + "\n")
     problemOne()
     problemTwo()
-
 
 if __name__ == '__main__':
     main()
