@@ -231,7 +231,13 @@ def rabbit(rZero,tFinal,K,L):
         R += rPrime
         rabbitList[0].append(a)
         rabbitList[1].append(R)
-    return rabbitList 
+    return rabbitList
+
+def reverserabbit(initialR, tFinal, finalR):
+    R = finalR
+    rabbitList = [[],[]]
+
+    
 
 def main():
     print("Problem Set 3\n" + 10*"_" + "\n")
