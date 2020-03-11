@@ -1,54 +1,50 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-
-
 def main():
-    coefList = [0.111,0.098,0.002,0.01]
-    coronaModel(coefList[0],coefList[1],coefList[2],coefList[3])
+    coronaModel(0.000000032725289,50)
 
-
-def coronaModel(a,b,c,d):
+def coronaModel(a,b):
     
-    S = 8398748
+    S = 19540000
     I = 1
     R = 0
-    D = 0
     t = 0
 
     sList = [S]
     iList = [I]
     rList = [R]
-    dList = [D]
     tList = [t]
 
-    while (I >= 0):
-        sPrime = (-1)*(a)*(S)*(I) + (d*R)
-        iPrime = (a)*(S)*(I) - (b*I) - (c*I)
-        rPrime = (b*I) - (d*R)
-        dPrime = (c*I)
+    while (I >= 1):
+        sPrime = (-1*a*S*I)
+        iPrime = ((a*S*I) - (I/b))
+        rPrime = (I/b)
 
         deltaT = 0.1
         deltaS = (sPrime*deltaT)
         deltaI = (iPrime*deltaT)
         deltaR = (rPrime*deltaT)
-        deltaD = (dPrime*deltaT)
 
         S += deltaS
         I += deltaI
         R += deltaR
-        D += deltaD
         t += deltaT
 
         sList.append(S)
         iList.append(I)
         rList.append(R)
-        dList.append(D)
         tList.append(t)
-    
-    print(iList)
-    
 
+    plt.plot(tList, sList, label=("S"+str(deltaT)))           # creates piecewise-linear graphs
+    plt.plot(tList, iList, label=("I"+str(deltaT)))
+    plt.plot(tList, rList, label=("R"+str(deltaT)))
+    plt.xlabel("Time (in days) with deltaT = " + str(deltaT))                 # sets details for plotting
+    plt.ylabel("Number of People")
+    plt.title("Corona SIR")
+    plt.legend()
+    plt.savefig("InClass/Corona Model/CoronaSIRGraph.png")
+    plt.close()
 
 
 
