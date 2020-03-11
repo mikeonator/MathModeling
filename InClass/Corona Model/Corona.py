@@ -21,7 +21,7 @@ def coronaModel(a,b):
         iPrime = ((a*S*I) - (I/b))
         rPrime = (I/b)
 
-        deltaT = 0.1
+        deltaT = 0.001
         deltaS = (sPrime*deltaT)
         deltaI = (iPrime*deltaT)
         deltaR = (rPrime*deltaT)
@@ -35,14 +35,16 @@ def coronaModel(a,b):
         iList.append(I)
         rList.append(R)
         tList.append(t)
+    print("Time :: " + str(t) + " || I :: " + str(I))
+    print("Number of Iterations :: " + str(len(tList)))
 
-    plt.plot(tList, sList, label=("S"+str(deltaT)))           # creates piecewise-linear graphs
-    plt.plot(tList, iList, label=("I"+str(deltaT)))
-    plt.plot(tList, rList, label=("R"+str(deltaT)))
-    plt.xlabel("Time (in days) with deltaT = " + str(deltaT))                 # sets details for plotting
+    plt.plot(tList, sList, label=("S" + str(deltaT)))           # creates piecewise-linear graphs
+    plt.plot(tList, iList, label=("I" + str(deltaT)))
+    plt.plot(tList, rList, label=("R" + str(deltaT)))
+    plt.xlabel("Time (in days) until I <= 1 (with deltaT = " + str(deltaT) + ")")                 # sets details for plotting
     plt.ylabel("Number of People")
-    plt.title("Corona SIR")
-    plt.legend()
+    plt.title("Time :: " + str(t) + "\nI :: " + str(I) + "\nNumber of Iterations :: " + str(len(tList)))
+    plt.legend(loc="best")
     plt.savefig("InClass/Corona Model/CoronaSIRGraph.png")
     plt.close()
 
