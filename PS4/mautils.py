@@ -1,8 +1,9 @@
+## Michael Audi 2020
+## Mathematical Modeling - Mr. Sabree
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-
-class goodfunc:
+class PS4:
     def __init__(self,name):
         self.name = name
 
@@ -141,7 +142,11 @@ class goodfunc:
 
         return [ind]
 
-    def graph(self,xaxis,yaxis,xlabel,ylabel,ptitle,gtitle,filename):
+class graphing:
+    def __init__(self,name):
+        self.name = name
+        
+    def graphone(self,xaxis,yaxis,xlabel,ylabel,ptitle,gtitle,filename):
         plt.plot(xaxis,yaxis,label = str(ptitle))
         plt.xlabel(str(xlabel))
         plt.ylabel(str(ylabel))
