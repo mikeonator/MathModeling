@@ -1,0 +1,52 @@
+
+--------
+2b
+                The yeast reaches 1% of the carrying capacity at time :: 33.900000000000
+                The yeast reaches 50% of the carrying capacity at time :: 13.45000000000
+--------
+--------
+2c
+                The yeast reaches 1% of the carrying capacity at time :: 67.849999999998
+                The yeast reaches 50% of the carrying capacity at time :: 26.90000000000
+--------
+--------
+2f
+        Fermentation ends when:
+                Time = 65.00999999999635
+                Yeast = 0.009998911286667501
+                Alcohol = 3.583300758797958
+--------
+--------
+2f
+                The maximum value of the yeast list is : 3.3011111599894667
+                This maximum value is reached at time t = 15.149999999999721
+--------
+--------
+2g1
+        Fermentation ends when:
+                Time = 65.00999999999635
+                Yeast = 0.009998911286666915
+                Alcohol = 17.91650379398988
+--------
+--------
+2g2
+        Fermentation ends when:
+                Time = 34.06000000000179
+                Yeast = 0.009979793984322966
+                Alcohol = 4.568625615782263
+--------
+--------
+2g3
+        Fermentation ends when:
+                Time = 175.94999999998495
+                Yeast = 0.009998772675779772
+                Alcohol = 13.315641855271931
+--------
+--------
+2j
+        Fermentation ends when:
+                Time = 68.43999999999811
+                Yeast = 0.009993481537171774
+                Alcohol = 3.417054127010535
+                Sugar = 14.748837618968384
+--------
