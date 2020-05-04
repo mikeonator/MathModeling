@@ -7,6 +7,7 @@ class testanimal():
         self.time = time
         print(self.population, self.time)
         print("x"*5)
+        
     def simulate(self,agent):
         self.population = agent.population
         self.time = agent.time
