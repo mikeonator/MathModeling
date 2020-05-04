@@ -3,7 +3,7 @@ class muledeer():
         self.population = population
         self.time = time
 
-        self.growth = 3/(365*14)
+        self.growth = 4/(365*14)
         self.death = 1/(365*6)
         
     def simulate(self,agent):

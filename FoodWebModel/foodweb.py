@@ -4,12 +4,15 @@
 # - Collegiate School
 
 from mautils import graphing as mgr
-from life import treefrog, checkerspot, deermule
+from life.primary import treefrog, checkerspot, deermule
 
 def main():
     days = 100
 
     savedata = world().run(days)
+    
+    
+    #graphing stuff
     ylablist = list(savedata[1].keys())
     ylist = []
     for a in ylablist:
