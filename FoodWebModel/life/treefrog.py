@@ -16,4 +16,4 @@ class treefrog():
 
         self.population += popchange
         
-        agent.treefrogpopulation = self.population
+        agent.tfrogpop = self.population
