@@ -5,13 +5,14 @@
 
 from mautils import graphing as mgr
 from life.primary import treefrog, checkerspot, deermule
+from life.secondary import jackrabbit, whiptail
+from life.tertiary import coyote, mountainlion
 
 def main():
-    days = 100
+    days = int(365*2)
 
     savedata = world().run(days)
-    
-    
+    #print(savedata[1]["Whiptail"])
     #graphing stuff
     ylablist = list(savedata[1].keys())
     ylist = []
@@ -41,6 +42,27 @@ class world():
         agent.mdeerlist = [agent.deerpop]
         agent.mdeer = deermule.muledeer(agent.deerpop, agent.time)
 
+        #Define variables for Jackrabbit
+        agent.jackpop = 500
+        agent.jackpoplist = [agent.jackpop]
+        agent.jackrab = jackrabbit.jackrabbit(agent.jackpop, agent.time)
+        
+        #define variables for whiptail
+        agent.whipop = 50
+        agent.whipoplist = [agent.whipop]
+        agent.whiptail = whiptail.whiptail(agent.whipop, agent.time)
+
+        #define variables for coyote
+        agent.coyotepop = 24
+        agent.coyotepoplist = [agent.coyotepop]
+        agent.coyote = coyote.coyote(agent.coyotepop, agent.time)
+
+        #define variables for mountain lion
+        agent.lionpop = 30
+        agent.lionpoplist = [agent.lionpop]
+        agent.lion = mountainlion.mountainlion(agent.lionpop, agent.time)
+
+
     def run(agent,final):
         
 
@@ -57,11 +79,27 @@ class world():
             agent.mdeer.simulate(agent)
             agent.mdeerlist.append(agent.deerpop)
 
+            #simulate one day of jackrabbit existence
+            agent.jackrab.simulate(agent)
+            agent.jackpoplist.append(agent.jackpop)
+
+            #simulate one day of Western Whiptail existence
+            agent.whiptail.simulate(agent)
+            agent.whipoplist.append(agent.whipop)
+
+            #simulate one day of coyote existence
+            agent.coyote.simulate(agent)
+            agent.coyotepoplist.append(agent.coyotepop)
+
+            #simulate one day of lion existence
+            agent.lion.simulate(agent)
+            agent.lionpoplist.append(agent.lionpop)
+
             agent.time +=1
             agent.timelist.append(agent.time)
         
         #combines recorded data into a dictionary, then outputs it
-        outdict = {"Treefrog":agent.tfroglist, "Checkerspot":agent.cspotlist, "Mule Deer":agent.mdeerlist}
+        outdict = {"Treefrog":agent.tfroglist, "Checkerspot":agent.cspotlist, "Mule Deer":agent.mdeerlist, "Jackrabbit":agent.jackpoplist, "Whiptail":agent.whipoplist, "Coyote":agent.coyotepoplist, "Mountain Lion":agent.lionpoplist}
         
         return [agent.timelist, outdict]
 
