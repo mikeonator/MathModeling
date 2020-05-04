@@ -19,7 +19,7 @@ class whiptail():
         lion = (((agent.lionpop)/3) * ((random.randint(0,10)/300)))
 
         carry = (1-(agent.whipop/200))
-        print("carry " + str(carry) + "|| pop " + str(agent.whipop) + " || Time = " + str(agent.time))
+        #print("carry " + str(carry) + "|| pop " + str(agent.whipop) + " || Time = " + str(agent.time))
 
         popchange = (((reproduction) - (natmortality))) - (coyote) - (lion)
 
