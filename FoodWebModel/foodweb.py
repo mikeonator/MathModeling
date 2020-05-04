@@ -3,12 +3,19 @@
 # - Mathematical Modeling 2020
 # - Collegiate School
 
-import matplotlib.pyplot as plt
+from mautils import graphing as mgr
 from life import treefrog, checkerspot, deermule
 
 def main():
-    savedata = world().run(50)
-    
+    days = 100
+
+    savedata = world().run(days)
+    ylablist = list(savedata[1].keys())
+    ylist = []
+    for a in ylablist:
+        ylist.append(savedata[1][a])
+    mgr.graphmult("graph", ylist, savedata[0], ylablist, "Time (in days)", ("Food Web population values over " + str(days) + " days."), "FoodWebModel/foodweb.png")
+
 
 
 class world():
@@ -17,18 +24,18 @@ class world():
         agent.timelist = [0]
 
         #Define variables for the Pacific Treefrog
-        agent.treefrogpopulation = 50
-        agent.tfroglist = []
-        agent.tfrog = treefrog.treefrog(agent.treefrogpopulation, agent.time)
+        agent.tfrogpop = 50
+        agent.tfroglist = [agent.tfrogpop]
+        agent.tfrog = treefrog.treefrog(agent.tfrogpop, agent.time)
 
         #Define Variables for Edith's Checkerspot
         agent.checkerpop = 500
-        agent.cspotlist = []
+        agent.cspotlist = [agent.checkerpop]
         agent.cspot = checkerspot.checkerspot(agent.checkerpop, agent.time)
 
         #Define Variables for Mule Deer
         agent.deerpop = 350
-        agent.mdeerlist = []
+        agent.mdeerlist = [agent.deerpop]
         agent.mdeer = deermule.muledeer(agent.deerpop, agent.time)
 
     def run(agent,final):
@@ -37,7 +44,7 @@ class world():
         for i in range(0, final):
             #Simulate one day of treefrog existence
             agent.tfrog.simulate(agent)
-            agent.tfroglist.append(agent.treefrogpopulation)
+            agent.tfroglist.append(agent.tfrogpop)
 
             #simulate one day of checkerspot existence 
             agent.cspot.simulate(agent)
@@ -51,9 +58,9 @@ class world():
             agent.timelist.append(agent.time)
         
         #combines recorded data into a dictionary, then outputs it
-        outdict = {"Time":agent.timelist, "Treefrog":agent.tfroglist, "Checkerspot":agent.cspotlist, "Mule Deer":agent.mdeerlist}
+        outdict = {"Treefrog":agent.tfroglist, "Checkerspot":agent.cspotlist, "Mule Deer":agent.mdeerlist}
         
-        return outdict
+        return [agent.timelist, outdict]
 
 if __name__ == '__main__':
     main()
