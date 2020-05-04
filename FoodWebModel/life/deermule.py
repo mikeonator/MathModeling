@@ -3,8 +3,8 @@ class muledeer():
         self.population = population
         self.time = time
 
-        self.growth = 3
-        self.death =3
+        self.growth = 3/(365*14)
+        self.death = 1/(365*6)
         
     def simulate(self,agent):
 
@@ -16,4 +16,4 @@ class muledeer():
 
         self.population += popchange
         
-        agent.treefrogpopulation = self.population
+        agent.deerpop = self.population
