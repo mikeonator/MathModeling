@@ -21,7 +21,7 @@ class whiptail():
         carry = (1-(agent.whipop/200))
         print("carry " + str(carry) + "|| pop " + str(agent.whipop) + " || Time = " + str(agent.time))
 
-        popchange = (((reproduction) - (natmortality))*carry) - (coyote) - (lion)
+        popchange = (((reproduction) - (natmortality))) - (coyote) - (lion)
 
         self.population += popchange
         
