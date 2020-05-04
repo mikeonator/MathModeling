@@ -9,7 +9,7 @@ from life.secondary import jackrabbit, whiptail
 from life.tertiary import coyote, mountainlion
 
 def main():
-    days = int(365*2)
+    days = int(365)
 
     savedata = world().run(days)
     #print(savedata[1]["Whiptail"])
