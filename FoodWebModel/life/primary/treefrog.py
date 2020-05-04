@@ -17,7 +17,9 @@ class treefrog():
 
         whiptail = ((random.randint(0,3)/400))*((agent.whipop)/2)
 
-        popchange = (((reproduction) - (natmortality))*(1-(agent.tfrogpop/300))) - (whiptail)
+        carry = (1-(agent.tfrogpop/300))
+
+        popchange = (((reproduction) - (natmortality))) - (whiptail)
 
         self.population += (popchange)
         
