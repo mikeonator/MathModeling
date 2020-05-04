@@ -1,10 +1,10 @@
-class treefrog():
+class checkerspot():
     def __init__(self, population, time):
         self.population = population
         self.time = time
 
-        self.growth = 23/(365*2)
-        self.death = (0.84)/(365)
+        self.growth = 250/(365*24)
+        self.death = 10/(365)
         
     def simulate(self,agent):
 
@@ -16,4 +16,4 @@ class treefrog():
 
         self.population += popchange
         
-        agent.treefrogpopulation = self.population
+        agent.checkerpop = self.population

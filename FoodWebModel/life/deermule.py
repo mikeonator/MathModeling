@@ -1,10 +1,10 @@
-class treefrog():
+class muledeer():
     def __init__(self, population, time):
         self.population = population
         self.time = time
 
-        self.growth = 23/(365*2)
-        self.death = (0.84)/(365)
+        self.growth = 3
+        self.death =3
         
     def simulate(self,agent):
 
