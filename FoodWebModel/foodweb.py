@@ -4,22 +4,35 @@
 # - Collegiate School
 
 import tools
-import life.test as test
+from life import test, treefrog
 
 def main():
     wrld = world()
-    wrld.run()
+    wrld.run(11)
 
 
 class world():
-    def run(agent):
-        agent.population = 0
+    def __init__(agent):
         agent.time = 0
-        testy = test.testanimal(agent.population, agent.time)
-        for a in range(0,11):
-            agent.population += 1
-            agent.time += 1
-            testy.simulate(agent)
+
+        #Define variables for the Pacific Treefrog
+        agent.treefrogpopulation = 50
+        agent.tfrog = treefrog.treefrog(agent.treefrogpopulation, agent.time)
+
+
+    def run(agent,final):
+
+        for i in range(0,final):
+            agent.tfrog.simulate(agent)
+            print(agent.treefrogpopulation)
+            
+            
+            
+            
+            
+            
+            
+            agent.time +=1
 
 if __name__ == '__main__':
     main()
