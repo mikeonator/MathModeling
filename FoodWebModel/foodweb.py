@@ -4,7 +4,6 @@
 # - Collegiate School
 
 import matplotlib.pyplot as plt
-import tools
 from life import test, treefrog, checkerspot, deermule
 
 def main():
